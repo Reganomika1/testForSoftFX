@@ -27,6 +27,9 @@ class DataViewController: UIViewController {
     
     var pageIndex: Int!
     
+    var limit:Int = 4
+    
+    var isAllDataFetched:Bool = false
     var dataObject: String = ""
     var strXMLData:String = ""
     
@@ -48,16 +51,27 @@ class DataViewController: UIViewController {
         fetchedControl = CoreDataManager.shared.getFetchedResultController(entityName: "NewsItem", sortDescriptor: "date", ascending: false)
         fetchedControl.delegate = self
         
+        fetch()
+    }
+    
+    func fetch(){
+        fetchedControl.fetchRequest.fetchLimit = limit
+        
         do {
             try fetchedControl.performFetch()
+            if let count = fetchedControl.fetchedObjects?.count{
+                if count < limit{
+                    isAllDataFetched = true
+                } else {
+                    isAllDataFetched = false
+                }
+                tableView.reloadData()
+            }
         } catch {
             let fetchError = error as NSError
             print("Unable to Perform Fetch Request")
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,16 +115,20 @@ class DataViewController: UIViewController {
         parser = XMLParser(contentsOf: url! as URL)!
         parser.delegate = self
         
-        let success:Bool = parser.parse()
+//        parser.parse()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if success {
-            print("parse success!")
-            
-            print(strXMLData)
-            
-            
-        } else {
-            print("parse failure!")
+        let scrollViewHeight = scrollView.frame.size.height
+        let scrollContentSizeHeight = scrollView.contentSize.height
+        let scrollOffset = scrollView.contentOffset.y
+        
+        if (scrollOffset + scrollViewHeight == scrollContentSizeHeight){
+            if isAllDataFetched == false {
+                limit += 4
+                fetch()
+            }
         }
     }
 
@@ -121,14 +139,19 @@ class DataViewController: UIViewController {
 extension DataViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if let fc = self.fetchedControl{
+            if let objects = fc.fetchedObjects{
+                return objects.count
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath) as! NewsItemTableViewCell
         
-        let currentItem = items[indexPath.row]
+        let currentItem = fetchedControl.object(at: indexPath) as! NewsItem
         
         cell.titleLabel.text = currentItem.title
         cell.dateLabel.text = currentItem.date
@@ -221,9 +244,6 @@ extension DataViewController: NSFetchedResultsControllerDelegate{
             
             userDefaults.synchronize()
         }
-        
-        
-        tableView.reloadData()
     }
 }
 
