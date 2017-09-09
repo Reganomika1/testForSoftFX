@@ -11,5 +11,6 @@ target 'TestForSoftFX' do
     pod 'SwiftyJSON'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'ReachabilitySwift'
+    pod 'Fuzi'
 
 end

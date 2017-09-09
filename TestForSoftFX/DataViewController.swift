@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ReachabilitySwift
+import Fuzi
 
 class Item {
     var title = ""
@@ -152,7 +153,7 @@ extension DataViewController: UITableViewDataSource {
         
         cell.titleLabel.text = currentItem.title
         cell.dateLabel.text = currentItem.date
-        cell.newsDescription.text = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+        cell.newsDescription.text = currentItem.text
         
         return cell
     }
@@ -161,9 +162,6 @@ extension DataViewController: UITableViewDataSource {
 //MARK: - XMLParserDelegate
 
 extension DataViewController: XMLParserDelegate{
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-    }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "title" {
@@ -174,7 +172,7 @@ extension DataViewController: XMLParserDelegate{
             self.item.date = self.foundCharacters
         }
         
-        if elementName == "sum"{
+        if elementName == "description"{
             self.item.text = self.foundCharacters
         }
         
@@ -212,7 +210,17 @@ extension DataViewController: XMLParserDelegate{
             let item = NewsItem(entity: self.entityDescript, insertInto: CoreDataManager.shared.managedObjectContext)
             item.title = element.title
             item.date = element.date
-            item.text = element.text
+            
+            do {
+                let doc = try XMLDocument(string: element.text)
+
+                if let root = doc.root {
+                    item.text = root.stringValue
+                }
+            } catch let error {
+                print(error)
+            }
+            
             if pageIndex == 0{
                 item.type = "live"
             } else {
