@@ -29,6 +29,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 
         let dataViewController = storyboard.instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
         dataViewController.dataObject = self.pageData[index]
+        dataViewController.pageIndex = index
         return dataViewController
     }
 

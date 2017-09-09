@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BAE198CF24746B461084481 /* Pods_TestForSoftFX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392CAABE90FDC97520FE7E86 /* Pods_TestForSoftFX.framework */; };
 		FA2CE3281F63C73C003DAC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE3271F63C73C003DAC1D /* AppDelegate.swift */; };
 		FA2CE32A1F63C73C003DAC1D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE3291F63C73C003DAC1D /* RootViewController.swift */; };
 		FA2CE32C1F63C73C003DAC1D /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE32B1F63C73C003DAC1D /* DataViewController.swift */; };
@@ -14,9 +15,16 @@
 		FA2CE3311F63C73C003DAC1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2CE32F1F63C73C003DAC1D /* Main.storyboard */; };
 		FA2CE3331F63C73C003DAC1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA2CE3321F63C73C003DAC1D /* Assets.xcassets */; };
 		FA2CE3361F63C73C003DAC1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2CE3341F63C73C003DAC1D /* LaunchScreen.storyboard */; };
+		FA2CE3471F63CF6C003DAC1D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE3451F63CF6C003DAC1D /* CoreDataManager.swift */; };
+		FA2CE34C1F63E40F003DAC1D /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE34B1F63E40F003DAC1D /* ServerManager.swift */; };
+		FA2CE3721F63F462003DAC1D /* NewsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE3711F63F462003DAC1D /* NewsItemTableViewCell.swift */; };
+		FA2CE3761F63F60C003DAC1D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA2CE3741F63F60C003DAC1D /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2671EB8390639CAD8EC32D41 /* Pods-TestForSoftFX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestForSoftFX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestForSoftFX/Pods-TestForSoftFX.debug.xcconfig"; sourceTree = "<group>"; };
+		392CAABE90FDC97520FE7E86 /* Pods_TestForSoftFX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestForSoftFX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDE9AC8EC0A08EB37561EE18 /* Pods-TestForSoftFX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestForSoftFX.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestForSoftFX/Pods-TestForSoftFX.release.xcconfig"; sourceTree = "<group>"; };
 		FA2CE3241F63C73B003DAC1D /* TestForSoftFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestForSoftFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA2CE3271F63C73C003DAC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA2CE3291F63C73C003DAC1D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +34,10 @@
 		FA2CE3321F63C73C003DAC1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA2CE3351F63C73C003DAC1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA2CE3371F63C73C003DAC1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA2CE3451F63CF6C003DAC1D /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FA2CE34B1F63E40F003DAC1D /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		FA2CE3711F63F462003DAC1D /* NewsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemTableViewCell.swift; sourceTree = "<group>"; };
+		FA2CE3751F63F60C003DAC1D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BAE198CF24746B461084481 /* Pods_TestForSoftFX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07BB8B3E7DD429873B1F12AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				392CAABE90FDC97520FE7E86 /* Pods_TestForSoftFX.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DE9F976B67C1706B105F5FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2671EB8390639CAD8EC32D41 /* Pods-TestForSoftFX.debug.xcconfig */,
+				CDE9AC8EC0A08EB37561EE18 /* Pods-TestForSoftFX.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FA2CE31B1F63C73B003DAC1D = {
 			isa = PBXGroup;
 			children = (
 				FA2CE3261F63C73B003DAC1D /* TestForSoftFX */,
 				FA2CE3251F63C73B003DAC1D /* Products */,
+				4DE9F976B67C1706B105F5FD /* Pods */,
+				07BB8B3E7DD429873B1F12AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +90,60 @@
 		FA2CE3261F63C73B003DAC1D /* TestForSoftFX */ = {
 			isa = PBXGroup;
 			children = (
+				FA2CE3441F63CF49003DAC1D /* Managers */,
+				FA2CE3431F63CF19003DAC1D /* Controller */,
+				FA2CE3421F63CF03003DAC1D /* View */,
 				FA2CE3271F63C73C003DAC1D /* AppDelegate.swift */,
-				FA2CE3291F63C73C003DAC1D /* RootViewController.swift */,
-				FA2CE32B1F63C73C003DAC1D /* DataViewController.swift */,
-				FA2CE32D1F63C73C003DAC1D /* ModelController.swift */,
-				FA2CE32F1F63C73C003DAC1D /* Main.storyboard */,
 				FA2CE3321F63C73C003DAC1D /* Assets.xcassets */,
 				FA2CE3341F63C73C003DAC1D /* LaunchScreen.storyboard */,
 				FA2CE3371F63C73C003DAC1D /* Info.plist */,
 			);
 			path = TestForSoftFX;
+			sourceTree = "<group>";
+		};
+		FA2CE3421F63CF03003DAC1D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CE32F1F63C73C003DAC1D /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FA2CE3431F63CF19003DAC1D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CE3291F63C73C003DAC1D /* RootViewController.swift */,
+				FA2CE32B1F63C73C003DAC1D /* DataViewController.swift */,
+				FA2CE32D1F63C73C003DAC1D /* ModelController.swift */,
+				FA2CE3701F63F44C003DAC1D /* cells */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FA2CE3441F63CF49003DAC1D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CE3731F63F5F6003DAC1D /* CoreData */,
+				FA2CE34B1F63E40F003DAC1D /* ServerManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		FA2CE3701F63F44C003DAC1D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CE3711F63F462003DAC1D /* NewsItemTableViewCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		FA2CE3731F63F5F6003DAC1D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CE3451F63CF6C003DAC1D /* CoreDataManager.swift */,
+				FA2CE3741F63F60C003DAC1D /* Model.xcdatamodeld */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA2CE33A1F63C73C003DAC1D /* Build configuration list for PBXNativeTarget "TestForSoftFX" */;
 			buildPhases = (
+				6CC267CE17867C7F411C74BD /* [CP] Check Pods Manifest.lock */,
 				FA2CE3201F63C73B003DAC1D /* Sources */,
 				FA2CE3211F63C73B003DAC1D /* Frameworks */,
 				FA2CE3221F63C73B003DAC1D /* Resources */,
+				3A3254FB13DF414186080D31 /* [CP] Embed Pods Frameworks */,
+				7133B4F94C994E810A40E2C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,14 +216,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A3254FB13DF414186080D31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TestForSoftFX/Pods-TestForSoftFX-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestForSoftFX/Pods-TestForSoftFX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CC267CE17867C7F411C74BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestForSoftFX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7133B4F94C994E810A40E2C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestForSoftFX/Pods-TestForSoftFX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA2CE3201F63C73B003DAC1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2CE3471F63CF6C003DAC1D /* CoreDataManager.swift in Sources */,
 				FA2CE32A1F63C73C003DAC1D /* RootViewController.swift in Sources */,
 				FA2CE32E1F63C73C003DAC1D /* ModelController.swift in Sources */,
+				FA2CE3761F63F60C003DAC1D /* Model.xcdatamodeld in Sources */,
+				FA2CE3721F63F462003DAC1D /* NewsItemTableViewCell.swift in Sources */,
 				FA2CE32C1F63C73C003DAC1D /* DataViewController.swift in Sources */,
+				FA2CE34C1F63E40F003DAC1D /* ServerManager.swift in Sources */,
 				FA2CE3281F63C73C003DAC1D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +409,7 @@
 		};
 		FA2CE33B1F63C73C003DAC1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2671EB8390639CAD8EC32D41 /* Pods-TestForSoftFX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestForSoftFX/Info.plist;
@@ -280,6 +422,7 @@
 		};
 		FA2CE33C1F63C73C003DAC1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDE9AC8EC0A08EB37561EE18 /* Pods-TestForSoftFX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestForSoftFX/Info.plist;
@@ -309,8 +452,22 @@
 				FA2CE33C1F63C73C003DAC1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA2CE3741F63F60C003DAC1D /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA2CE3751F63F60C003DAC1D /* Model.xcdatamodel */,
+			);
+			currentVersion = FA2CE3751F63F60C003DAC1D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA2CE31C1F63C73B003DAC1D /* Project object */;
 }

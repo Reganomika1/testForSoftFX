@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Commit" representedClassName="Commit" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commitHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="repo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repo" inverseName="commit" inverseEntity="Repo" syncable="YES"/>
+    </entity>
+    <entity name="Repo" representedClassName="Repo" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authorId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="commit" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="repo" inverseEntity="Commit" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Commit" positionX="-54" positionY="18" width="128" height="120"/>
+        <element name="Repo" positionX="-63" positionY="-18" width="128" height="150"/>
+    </elements>
+</model>
