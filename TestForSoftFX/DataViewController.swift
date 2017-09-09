@@ -12,7 +12,7 @@ import CoreData
 class Item {
     var title = ""
     var date = ""
-    var newsItemDescription = ""
+    var text = ""
 }
 
 
@@ -51,6 +51,12 @@ class DataViewController: UIViewController {
         fetchedControl = CoreDataManager.shared.getFetchedResultController(entityName: "NewsItem", sortDescriptor: "date", ascending: false)
         fetchedControl.delegate = self
         
+        if pageIndex == 0{
+            fetchedControl.fetchRequest.predicate = NSPredicate(format: "type == %@", "live")
+        } else {
+            fetchedControl.fetchRequest.predicate = NSPredicate(format: "type == %@", "analytics")
+        }
+        
         fetch()
     }
     
@@ -65,7 +71,6 @@ class DataViewController: UIViewController {
                 } else {
                     isAllDataFetched = false
                 }
-                tableView.reloadData()
             }
         } catch {
             let fetchError = error as NSError
@@ -115,7 +120,7 @@ class DataViewController: UIViewController {
         parser = XMLParser(contentsOf: url! as URL)!
         parser.delegate = self
         
-//        parser.parse()
+        parser.parse()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -155,7 +160,7 @@ extension DataViewController: UITableViewDataSource {
         
         cell.titleLabel.text = currentItem.title
         cell.dateLabel.text = currentItem.date
-        cell.newsDescription.text = currentItem.newsItemDescription
+        cell.newsDescription.text = currentItem.text
         
         return cell
     }
@@ -182,14 +187,14 @@ extension DataViewController: XMLParserDelegate{
         }
         
         if elementName == "sum"{
-            self.item.newsItemDescription = self.foundCharacters
+            self.item.text = self.foundCharacters
         }
         
         if elementName == "item" {
             let tempItem = Item()
             tempItem.title = self.item.title
             tempItem.date = self.item.date
-            tempItem.newsItemDescription = self.item.newsItemDescription
+            tempItem.text = self.item.text
             self.items.append(tempItem)
         }
         self.foundCharacters = ""
@@ -219,10 +224,17 @@ extension DataViewController: XMLParserDelegate{
             let item = NewsItem(entity: self.entityDescript, insertInto: CoreDataManager.shared.managedObjectContext)
             item.title = element.title
             item.date = element.date
-            item.newsItemDescription = element.newsItemDescription
+            item.text = element.text
+            if pageIndex == 0{
+                item.type = "live"
+            } else {
+                item.type = "analytics"
+            }
  
             CoreDataManager.shared.saveContext()
         }
+        
+        tableView.reloadData()
     }
 }
 
