@@ -31,7 +31,7 @@ class DataViewController: UIViewController {
     
     var pageIndex: Int!
     
-    var limit:Int = 4
+    var limit:Int = 30
     
     var isAllDataFetched:Bool = false
     var dataObject: String = ""
@@ -46,7 +46,7 @@ class DataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 91
         
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -122,7 +122,7 @@ class DataViewController: UIViewController {
         if (scrollOffset + scrollViewHeight == scrollContentSizeHeight){
             if reachability?.isReachable == false {
                 if isAllDataFetched == false {
-                    limit += 4
+                    limit += 30
                     fetch()
                     tableView.reloadData()
                 }
