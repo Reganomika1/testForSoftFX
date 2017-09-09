@@ -1,10 +1,12 @@
 PODS:
   - Alamofire (4.5.0)
+  - ReachabilitySwift (3)
   - SwiftyJSON (3.1.4)
   - SwiftyXMLParser (3.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - ReachabilitySwift
   - SwiftyJSON
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
 
@@ -19,9 +21,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyXMLParser: acca46f5a8f0728cf0e618736d8a7fc7822abcbe
 
-PODFILE CHECKSUM: 8243f9e48b90d833aec9b47f92feef7f8cf8b436
+PODFILE CHECKSUM: 90270d8abfbb0605899da7acc6995ae2f8643075
 
 COCOAPODS: 1.3.1

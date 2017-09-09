@@ -10,5 +10,6 @@ target 'TestForSoftFX' do
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
     pod 'SwiftyXMLParser', :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
+    pod 'ReachabilitySwift'
 
 end

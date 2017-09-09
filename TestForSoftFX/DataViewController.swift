@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ReachabilitySwift
 
 class Item {
     var title = ""
@@ -22,6 +23,8 @@ class DataViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var entityDescript :NSEntityDescription!
+    
+    let reachability = Reachability()
     
     var fetchedControl: NSFetchedResultsController<NSFetchRequestResult>!
     
@@ -42,7 +45,9 @@ class DataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 70
+        tableView.estimatedRowHeight = 150
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.tableFooterView = UIView()
         
@@ -56,7 +61,6 @@ class DataViewController: UIViewController {
         } else {
             fetchedControl.fetchRequest.predicate = NSPredicate(format: "type == %@", "analytics")
         }
-        
         fetch()
     }
     
@@ -65,6 +69,7 @@ class DataViewController: UIViewController {
         
         do {
             try fetchedControl.performFetch()
+            
             if let count = fetchedControl.fetchedObjects?.count{
                 if count < limit{
                     isAllDataFetched = true
@@ -77,11 +82,6 @@ class DataViewController: UIViewController {
             print("Unable to Perform Fetch Request")
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -99,17 +99,6 @@ class DataViewController: UIViewController {
             break
         default:
             break
-        }
-        
-        DispatchQueue.main.async {
-            if let userDefaults = UserDefaults(suiteName: "group.TodayExtensionDate"){
-                
-                if let date = userDefaults.object(forKey: "lastUpdate"){
-                    print(date)
-                } else {
-                    print("no")
-                }
-            }
         }
     }
     
@@ -130,9 +119,12 @@ class DataViewController: UIViewController {
         let scrollOffset = scrollView.contentOffset.y
         
         if (scrollOffset + scrollViewHeight == scrollContentSizeHeight){
-            if isAllDataFetched == false {
-                limit += 4
-                fetch()
+            if reachability?.isReachable == false {
+                if isAllDataFetched == false {
+                    limit += 4
+                    fetch()
+                    tableView.reloadData()
+                }
             }
         }
     }
@@ -160,13 +152,9 @@ extension DataViewController: UITableViewDataSource {
         
         cell.titleLabel.text = currentItem.title
         cell.dateLabel.text = currentItem.date
-        cell.newsDescription.text = currentItem.text
+        cell.newsDescription.text = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
     }
 }
 
@@ -232,6 +220,9 @@ extension DataViewController: XMLParserDelegate{
             }
  
             CoreDataManager.shared.saveContext()
+        }
+        if items.count == 0{
+            fetch()
         }
         
         tableView.reloadData()
