@@ -53,11 +53,11 @@
                                 <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCell" rowHeight="70" id="m6I-QP-Duj" customClass="NewsItemTableViewCell" customModule="TestForSoftFX" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCell" rowHeight="91" id="m6I-QP-Duj" customClass="NewsItemTableViewCell" customModule="TestForSoftFX" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m6I-QP-Duj" id="1fv-ZM-0lU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-xK-U7j">
@@ -72,19 +72,29 @@
                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VB-M0-lyu">
+                                                    <rect key="frame" x="18" y="61" width="339" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="iOO-xK-U7j" firstAttribute="leading" secondItem="1fv-ZM-0lU" secondAttribute="leading" constant="10" id="Aph-ov-Gxz"/>
+                                                <constraint firstItem="2VB-M0-lyu" firstAttribute="leading" secondItem="1fv-ZM-0lU" secondAttribute="leadingMargin" constant="10" id="Aul-ZQ-jFM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2VB-M0-lyu" secondAttribute="trailing" constant="10" id="JWv-WC-8x0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2VB-M0-lyu" secondAttribute="bottom" constant="9.5" id="LkN-A0-w5b"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xCe-sH-4IN" secondAttribute="trailing" constant="10" id="O58-ul-kdY"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xCe-sH-4IN" secondAttribute="bottom" constant="10.5" id="Ytk-7u-8Aw"/>
                                                 <constraint firstItem="xCe-sH-4IN" firstAttribute="leading" secondItem="1fv-ZM-0lU" secondAttribute="leadingMargin" constant="10" id="eCF-vz-eQA"/>
                                                 <constraint firstItem="xCe-sH-4IN" firstAttribute="top" secondItem="iOO-xK-U7j" secondAttribute="bottom" constant="7" id="edD-43-L7Z"/>
                                                 <constraint firstItem="iOO-xK-U7j" firstAttribute="top" secondItem="1fv-ZM-0lU" secondAttribute="top" constant="5" id="g5n-kp-iBt"/>
+                                                <constraint firstItem="2VB-M0-lyu" firstAttribute="top" secondItem="xCe-sH-4IN" secondAttribute="bottom" constant="10" id="oSY-4g-cad"/>
                                                 <constraint firstAttribute="trailing" secondItem="iOO-xK-U7j" secondAttribute="trailing" constant="10" id="p0D-K3-IvZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="xCe-sH-4IN" id="U3c-6Q-Pte"/>
+                                            <outlet property="newsDescription" destination="2VB-M0-lyu" id="8no-a8-UpH"/>
                                             <outlet property="titleLabel" destination="iOO-xK-U7j" id="BaK-Kb-joD"/>
                                         </connections>
                                     </tableViewCell>

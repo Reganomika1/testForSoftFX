@@ -10,12 +10,13 @@ import UIKit
 import CoreData
 
 class Item {
-    var title = "";
-    var date = "";
+    var title = ""
+    var date = ""
+    var newsItemDescription = ""
 }
 
 
-class DataViewController: UIViewController,NSFetchedResultsControllerDelegate {
+class DataViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -55,6 +56,8 @@ class DataViewController: UIViewController,NSFetchedResultsControllerDelegate {
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +80,17 @@ class DataViewController: UIViewController,NSFetchedResultsControllerDelegate {
             break
         default:
             break
+        }
+        
+        DispatchQueue.main.async {
+            if let userDefaults = UserDefaults(suiteName: "group.TodayExtensionDate"){
+                
+                if let date = userDefaults.object(forKey: "lastUpdate"){
+                    print(date)
+                } else {
+                    print("no")
+                }
+            }
         }
     }
     
@@ -118,6 +132,7 @@ extension DataViewController: UITableViewDataSource {
         
         cell.titleLabel.text = currentItem.title
         cell.dateLabel.text = currentItem.date
+        cell.newsDescription.text = currentItem.newsItemDescription
         
         return cell
     }
@@ -126,6 +141,8 @@ extension DataViewController: UITableViewDataSource {
         return UITableViewAutomaticDimension
     }
 }
+
+//MARK: - XMLParserDelegate
 
 extension DataViewController: XMLParserDelegate{
     
@@ -141,10 +158,15 @@ extension DataViewController: XMLParserDelegate{
             self.item.date = self.foundCharacters
         }
         
+        if elementName == "sum"{
+            self.item.newsItemDescription = self.foundCharacters
+        }
+        
         if elementName == "item" {
             let tempItem = Item()
             tempItem.title = self.item.title
             tempItem.date = self.item.date
+            tempItem.newsItemDescription = self.item.newsItemDescription
             self.items.append(tempItem)
         }
         self.foundCharacters = ""
@@ -159,7 +181,7 @@ extension DataViewController: XMLParserDelegate{
         print("failure error: ", parseError)
     }
     
-    public func parserDidEndDocument(_ parser: XMLParser) {
+    func parserDidEndDocument(_ parser: XMLParser) {
         
         
         flag: for element in items {
@@ -174,22 +196,35 @@ extension DataViewController: XMLParserDelegate{
             let item = NewsItem(entity: self.entityDescript, insertInto: CoreDataManager.shared.managedObjectContext)
             item.title = element.title
             item.date = element.date
+            item.newsItemDescription = element.newsItemDescription
  
             CoreDataManager.shared.saveContext()
         }
+    }
+}
 
+//MARK : - NSFetchedResultsControllerDelegate
+
+extension DataViewController: NSFetchedResultsControllerDelegate{
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        if let userDefaults = UserDefaults(suiteName: "group.TodayExtensionDate"){
+            
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "dd MMM yyyy hh:mm:ss"
+            
+            let dateString = dateFormatter.string(from: Date())
+            
+            userDefaults.set(dateString, forKey: "lastUpdate")
+            
+            userDefaults.synchronize()
+        }
+        
         
         tableView.reloadData()
     }
-
-}
-
-
-//MARK: - UITableViewDataSource
-
-extension DataViewController: UITableViewDelegate {
-    
-
 }
 
 
